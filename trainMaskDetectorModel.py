@@ -111,7 +111,7 @@ print(classification_report(testY.argmax(axis=1), predIdxs,
 
 # serialize the model to disk
 print("[INFO] saving mask detector model...")
-model.save("mask_detector.model", save_format="h5")
+model.save("my_mask_detector_model.model", save_format="h5")
 
 
 N = EPOCHS
