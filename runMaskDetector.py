@@ -7,6 +7,7 @@ import imutils
 import time
 import cv2
 import os
+import winsound
 
 def detect_and_predict_mask(frame, faceNet, maskNet):
 
@@ -70,8 +71,16 @@ while True:
 		(startX, startY, endX, endY) = box
 		(mask, withoutMask) = pred
 
-		label = "Mask" if mask > withoutMask else "No Mask"
-		color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
+		if mask > withoutMask:
+			label = "Mask On."
+			color = (0 , 255 , 0)
+		else:
+			label = "No Mask."
+			color = (0 , 0 , 255)
+			#winsound.Beep(2500, 100)
+
+		#label = "Mask" if mask > withoutMask else "No Mask"
+		#color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
 
 		label = "{}: {:.2f}%".format(label, max(mask, withoutMask) * 100)
 
